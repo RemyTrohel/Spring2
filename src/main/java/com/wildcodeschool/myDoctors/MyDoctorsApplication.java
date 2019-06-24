@@ -14,7 +14,7 @@ import org.springframework.web.server.ResponseStatusException;
 @SpringBootApplication
 public class MyDoctorsApplication {
 
-	public static String[][] doctors = {{},{},{},{},{},{},{},{},
+	public static String[][] doctors = {
 		{"Christopher Eccleston", "9", "13", "41"},
 		{"David Tennant", "10", "47", "34"},
 		{"Matt Smith", "11", "44", "27"},
@@ -84,9 +84,9 @@ public class MyDoctorsApplication {
 	Doctor myDoctor(@PathVariable int number, @RequestParam(value = "details", required=false) boolean details) {
 		if (number >= 9 && number <= 13) {
 			if (details) {
-				return new ExtendedDoctor(doctors[number-1][0], doctors[number-1][1], doctors[number-1][2], doctors[number-1][3]);
+				return new ExtendedDoctor(doctors[number-9][0], doctors[number-9][1], doctors[number-9][2], doctors[number-9][3]);
 			}
-			return new Doctor(doctors[number-1][0], doctors[number-1][1]);
+			return new Doctor(doctors[number-9][0], doctors[number-9][1]);
 		}
 		else if (number >= 1 && number < 9) {
 			throw new ResponseStatusException(HttpStatus.SEE_OTHER);
